@@ -1,74 +1,50 @@
 body {
-    font-family: sans-serif;
-    text-align: center;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  background: white;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-    margin-top: 50px;
-    color: #333;
-}
-
-#gameBoard {
-    width: 400px;
-    height: 400px;
-    margin: 20px auto;
-    background: #eee;
-    border: 2px solid #000;
-    position: relative;
-    overflow: hidden;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-#ladderList {
-    list-style-type: none;
-    padding: 0;
-}
-
-input {
-    padding: 10px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-}
-
-#scoreSection, #ladderSection {
-    display: none;
-}
-
-#instructions {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #333;
-}
-
-#usernameContainer {
-    margin-top: 50px;
-}
-
-/* 增加遊戲畫面與元件的間距與可視範圍 */
-#scoreSection {
-    margin-top: 20px;
-}
-
-#ladderSection {
-    margin-top: 20px;
+.hidden {
+  display: none;
 }
 
 #gameBoard {
-    margin-top: 20px;
-    margin-bottom: 30px;
+  position: relative;
+  width: 800px;
+  height: 800px;
+  margin: 20px auto;
+  background: #eee;
+  overflow: hidden;
+  border: 2px solid #333;
+}
+
+.cell {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+
+.snake {
+  background-color: green;
+}
+
+.enemy {
+  background-color: purple;
+}
+
+.food-1 {
+  background-color: red;
+  border-radius: 50%;
+}
+
+.food-4 {
+  background-color: blue;
+  border-radius: 50%;
+}
+
+.food-10 {
+  background-color: gold;
+  border-radius: 50%;
 }
