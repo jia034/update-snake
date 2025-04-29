@@ -1,37 +1,26 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>進階版貪吃蛇遊戲</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>🐍 進階版無限貪吃蛇</h1>
-  
-  <!-- 使用者名稱輸入 -->
-  <div id="usernameContainer">
-    <label for="username">請輸入您的名稱：</label>
-    <input type="text" id="username" placeholder="請輸入名稱">
+<h1>貪吃蛇遊戲</h1>
+
+<!-- 使用者名稱輸入頁面 -->
+<div id="usernameContainer">
+    <h2>歡迎來到貪吃蛇遊戲</h2>
+    <label for="username">輸入您的名稱：</label>
+    <input type="text" id="username" placeholder="請輸入名稱" />
     <button id="startButton">開始遊戲</button>
-  </div>
-  
-  <!-- 顯示分數和天梯 -->
-  <div id="scoreSection" style="display: none;">
+</div>
+
+<!-- 遊戲畫面 -->
+<div id="scoreSection" style="display: none;">
     <div id="score">分數：0</div>
-    <div id="highScore">歷史最高分：0</div>
-    <div id="scoreBreakdown">1分食物：0、4分食物：0、10分食物：0</div>
-    <div id="ladder">
-      <h3>天梯排行榜</h3>
-      <ol id="ladderList">
-        <!-- 排行榜項目將顯示在此 -->
-      </ol>
-    </div>
-  </div>
+    <div id="gameBoard"></div>
+    <div id="instructions">使用方向鍵控制，空白鍵開始遊戲</div>
+</div>
 
-  <div id="gameBoard"></div>
-  <div id="instructions">使用方向鍵控制，空白鍵開始遊戲</div>
+<!-- 天梯頁面 -->
+<div id="ladderSection" style="display: none;">
+    <h2>遊戲天梯</h2>
+    <ul id="ladderList"></ul>
+    <button id="restartButton">重新開始遊戲</button>
+    <button id="newUserButton">新增使用者</button>
+</div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+<script src="game.js"></script>

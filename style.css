@@ -1,90 +1,74 @@
 body {
-  font-family: sans-serif;
-  background-color: #fff;
-  color: #000;
-  text-align: center;
-  margin: 0;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
-  margin: 20px 0;
-}
-
-#usernameContainer {
-  margin-top: 50px;
-}
-
-#username {
-  padding: 10px;
-  margin-top: 10px;
-}
-
-#startButton {
-  padding: 10px 20px;
-  margin-top: 20px;
-  font-size: 16px;
-}
-
-#score, #highScore {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-#scoreBreakdown {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-#ladder {
-  margin-top: 20px;
-}
-
-#ladderList {
-  list-style-type: decimal;
-  padding-left: 20px;
+    margin-top: 50px;
+    color: #333;
 }
 
 #gameBoard {
-  width: 800px;
-  height: 800px;
-  margin: 0 auto;
-  background: #eee;
-  border: 2px solid #000;
-  position: relative;
-  overflow: hidden;
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    background: #eee;
+    border: 2px solid #000;
+    position: relative;
+    overflow: hidden;
 }
 
-.cell {
-  width: 20px;
-  height: 20px;
-  position: absolute;
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
-.snake {
-  background-color: #00aa00;
-  border: 1px solid #006600;
+button:hover {
+    background-color: #218838;
 }
 
-.enemy {
-  background-color: #cc00cc;
+#ladderList {
+    list-style-type: none;
+    padding: 0;
 }
 
-.food-1 {
-  background-color: red;
-  border-radius: 50%;
+input {
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
 }
 
-.food-4 {
-  background-color: blue;
-  border-radius: 50%;
-}
-
-.food-10 {
-  background-color: gold;
-  border-radius: 50%;
+#scoreSection, #ladderSection {
+    display: none;
 }
 
 #instructions {
-  margin-top: 10px;
-  font-size: 14px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+#usernameContainer {
+    margin-top: 50px;
+}
+
+/* 增加遊戲畫面與元件的間距與可視範圍 */
+#scoreSection {
+    margin-top: 20px;
+}
+
+#ladderSection {
+    margin-top: 20px;
+}
+
+#gameBoard {
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
