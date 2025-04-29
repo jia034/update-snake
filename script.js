@@ -1,20 +1,33 @@
+// 變數初始化
 let snake, direction, foodList, interval, score;
 let isRunning = false;
 let canMove = false;
+let currentUser = '';
+let users = JSON.parse(localStorage.getItem('users')) || []; // 儲存使用者
 
 const board = document.getElementById('gameBoard');
 const scoreDisplay = document.getElementById('score');
+const ladderList = document.getElementById('ladderList');
 
+// 當按下開始遊戲按鈕
 document.getElementById('startButton').addEventListener('click', startGame);
+
+// 當按下重新開始遊戲按鈕
+document.getElementById('restartButton').addEventListener('click', restartGame);
+
+// 當按下新增使用者按鈕
+document.getElementById('newUserButton').addEventListener('click', addNewUser);
 
 function startGame() {
     const usernameInput = document.getElementById('username');
-    if (usernameInput.value.trim() === '') {
+    currentUser = usernameInput.value.trim();
+
+    if (currentUser === '') {
         alert('請輸入使用者名稱');
         return;
     }
 
-    // 隱藏輸入頁面，顯示遊戲區
+    // 隱藏使用者名稱輸入頁面，顯示遊戲區
     document.getElementById('usernameContainer').style.display = 'none';
     document.getElementById('scoreSection').style.display = 'block';
 
@@ -91,6 +104,28 @@ function checkGameOver() {
 function endGame() {
     clearInterval(interval);
     alert('遊戲結束！');
+    saveScore();
+    showLadder();
+}
+
+// 儲存分數
+function saveScore() {
+    users.push({ name: currentUser, score });
+    users.sort((a, b) => b.score - a.score); // 排序
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+// 顯示天梯
+function showLadder() {
+    document.getElementById('scoreSection').style.display = 'none';
+    document.getElementById('ladderSection').style.display = 'block';
+
+    ladderList.innerHTML = '';
+    users.forEach(user => {
+        const li = document.createElement('li');
+        li.textContent = `${user.name}: ${user.score}`;
+        ladderList.appendChild(li);
+    });
 }
 
 // 畫出遊戲畫面
@@ -115,21 +150,14 @@ function createCell(x, y, className) {
     board.appendChild(el);
 }
 
-document.addEventListener('keydown', e => {
-    if (!isRunning) return;
+// 重啟遊戲
+function restartGame() {
+    document.getElementById('ladderSection').style.display = 'none';
+    document.getElementById('usernameContainer').style.display = 'block';
+}
 
-    switch (e.key) {
-        case 'ArrowUp':
-            if (direction.y !== 1) direction = { x: 0, y: -1 };
-            break;
-        case 'ArrowDown':
-            if (direction.y !== -1) direction = { x: 0, y: 1 };
-            break;
-        case 'ArrowLeft':
-            if (direction.x !== 1) direction = { x: -1, y: 0 };
-            break;
-        case 'ArrowRight':
-            if (direction.x !== -1) direction = { x: 1, y: 0 };
-            break;
-    }
-});
+// 新增使用者
+function addNewUser() {
+    document.getElementById('ladderSection').style.display = 'none';
+    document.getElementById('usernameContainer').style.display = 'block';
+}
