@@ -1,34 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>進階貪吃蛇遊戲</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>貪食蛇遊戲</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+  <script>
+    // 您的 Firebase 設定
+    const firebaseConfig = {
+      apiKey: "AIzaSyB86oCEGwNct-5p83ZMMeXQTkDduQ3SMOI",
+      authDomain: "game-snake-b48ba.firebaseapp.com",
+      databaseURL: "https://game-snake-b48ba-default-rtdb.firebaseio.com",
+      projectId: "game-snake-b48ba",
+      storageBucket: "game-snake-b48ba.firebasestorage.app",
+      messagingSenderId: "743641062845",
+      appId: "1:743641062845:web:200070aa7fa02eba6ac6d4"
+    };
+
+    // 初始化 Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+  </script>
 </head>
+
 <body>
-  <div id="usernamePage">
-    <h1>歡迎來玩🐍貪吃蛇</h1>
-    <input type="text" id="usernameInput" placeholder="請輸入使用者名稱" />
-    <button id="startButton">開始遊戲</button>
+  <div id="startScreen">
+    <h1>貪食蛇遊戲</h1>
+    <label for="playerName">玩家名稱：</label>
+    <input type="text" id="playerName" value="Player" />
+    <button onclick="startGame()">開始遊戲</button>
   </div>
-
-  <div id="gamePage" class="hidden">
-    <div id="infoPanel">
-      <div id="score">分數：0</div>
-      <div id="highScore">最高分：0</div>
-      <div id="scoreBreakdown">1分食物：0、4分：0、10分：0</div>
-    </div>
-    <div id="gameBoard"></div>
+  <canvas id="game" width="400" height="400"></canvas>
+  <div id="gameOverScreen">
+    <h2>遊戲結束！</h2>
+    <p>得分：<span id="finalScore"></span></p>
+    <p>遊玩時間：<span id="playTime"></span> 秒</p>
+    <button onclick="showLeaderboard()">查看排行榜</button>
+    <button onclick="restartGame()">重新開始</button>
   </div>
-
-  <div id="leaderboardPage" class="hidden">
-    <h2>🏆 天梯排行榜</h2>
-    <ul id="leaderboardList"></ul>
-    <button id="restartBtn">重新開始</button>
-    <button id="newUserBtn">新增使用者</button>
+  <div id="leaderboardScreen">
+    <h2>排行榜</h2>
+    <ol id="leaderboard">
+      </ol>
+    <button onclick="hideLeaderboard()">返回遊戲</button>
   </div>
-
   <script src="script.js"></script>
 </body>
+
 </html>
